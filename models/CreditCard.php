@@ -14,4 +14,24 @@ class CreditCard
         $this->owner = $_owner;
         $this->cvv = $_cvv;
     }
+
+    public function isValid()
+    {
+        // Check su data di scadenza
+        return true;
+    }
+
+    public function proceedPayment($price)
+    {
+        $success = true;
+
+        try {
+            // interrogo un'API di transazioni monetarie per $price
+        } catch (Exception $e) {
+            // è andata male
+            $success = false;
+        }
+
+        return $success;
+    }
 }
