@@ -7,6 +7,7 @@ class Product
     public $name;
     public $description = '';
     public $category = '';
+    public $size = 'M';
 
     public $price = 0;
     public $vat = 22;
