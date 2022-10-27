@@ -36,4 +36,12 @@ class User
             "granTotal" => $totalPrice + $totalVat
         ];
     }
+
+    public function pay()
+    {
+        if ($this->creditCard->isValid()) {
+            $price = $this->checkOut();
+            $this->creditCard->proceedPayment($price['granTotal']);
+        }
+    }
 }
