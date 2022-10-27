@@ -8,13 +8,21 @@ class RegisteredUser extends User
     public $password;
     public $profileImage;
 
+    private $discount = 20;
+
     public function checkOut()
     {
         $totalCartPrice = parent::checkOut();
+        $discount = $this->getDiscount();
         return [
-            "total" => $totalCartPrice['total'] * 0.8,
-            "vat" => $totalCartPrice['vat'] * 0.8,
-            "granTotal" => ($totalCartPrice['total'] + $totalCartPrice['vat']) * 0.8,
+            "total" => $totalCartPrice['total'] * $discount,
+            "vat" => $totalCartPrice['vat'] * $discount,
+            "granTotal" => ($totalCartPrice['total'] + $totalCartPrice['vat']) * $discount,
         ];
+    }
+
+    private function getDiscount()
+    {
+        return (100 - $this->discount) / 100;
     }
 }
