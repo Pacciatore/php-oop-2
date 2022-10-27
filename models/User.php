@@ -41,7 +41,10 @@ class User
     {
         if ($this->creditCard->isValid()) {
             $price = $this->checkOut();
-            $this->creditCard->proceedPayment($price['granTotal']);
+            if ($this->creditCard->proceedPayment($price['granTotal'])) {
+                $this->cart = [];
+                // inviamo una mail con ricevuta/fattura
+            };
         }
     }
 }
