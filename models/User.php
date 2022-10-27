@@ -1,11 +1,19 @@
 <?php
+require_once __DIR__ . './CreditCard.php';
 
 class User
 {
     public $email;
     public $address = '';
 
+    public $creditCard;
+
     public $cart = [];
+
+    public function addCreditCard($_number, $_expiryDate, $_owner, $_cvv)
+    {
+        $this->creditCard = new CreditCard($_number, $_expiryDate, $_owner, $_cvv);
+    }
 
     public function addProduct($product)
     {
